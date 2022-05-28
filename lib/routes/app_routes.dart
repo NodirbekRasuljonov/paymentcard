@@ -6,7 +6,7 @@ class AppRoutes{
     var args=s.arguments;
     switch (s.name) {
       case '/homeview':
-        return MaterialPageRoute(builder: (context)=>SelectImage(),);
+        return MaterialPageRoute(builder: (context)=>DragScreen(),);
     }
   }
 }
