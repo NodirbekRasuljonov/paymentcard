@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paymentcard/screens/inputdata/view/input_view.dart';
+import 'package:paymentcard/screens/selectimage/view/complete_ui.dart';
+import 'package:paymentcard/screens/selectimage/view/input_view.dart';
 import 'package:paymentcard/screens/selectimage/view/home_view.dart';
 
 class AppRoutes {
@@ -13,6 +14,10 @@ class AppRoutes {
         case '/inputview':
         return MaterialPageRoute(
           builder: (context) => InputView(),
+        );
+         case '/complete':
+        return MaterialPageRoute(
+          builder: (context) => CompleteUI(),
         );
     }
   }
