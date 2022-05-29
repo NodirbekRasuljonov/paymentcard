@@ -54,13 +54,20 @@ class SelectImage extends StatelessWidget {
                           colorOpacity: 0.0,
                         ),
                   // ? change the background image using from a device or default images given
-                  frontBackground: Image.asset(
-                    context.watch<MyCreditCardCubit>().imgurl,
-                  ).blurred(
-                    blur: context.watch<MyCreditCardCubit>().blurValue,
-                    blurColor: Colors.transparent,
-                    colorOpacity: 0.0,
-                  ),
+                  frontBackground: context
+                          .watch<MyCreditCardCubit>()
+                          .controlimages
+                      ? Image.file(
+                          File(
+                            context.watch<MyCreditCardCubit>().image!.path,
+                          ),
+                        )
+                      : Image.asset(context.watch<MyCreditCardCubit>().imgurl)
+                          .blurred(
+                          blur: context.watch<MyCreditCardCubit>().blurValue,
+                          blurColor: Colors.transparent,
+                          colorOpacity: 0.0,
+                        ),
                 );
               },
               onWillAccept: (data) {
@@ -116,21 +123,25 @@ class SelectImage extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: context.h*0.02,
-            right: context.h*0.02,
-            bottom: context.h*0.1,
-
+            left: context.h * 0.02,
+            right: context.h * 0.02,
+            bottom: context.h * 0.1,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                fixedSize: Size(context.h*0.3, context.h*0.07)
-              ),              onPressed: () {
+                  fixedSize: Size(context.h * 0.3, context.h * 0.07)),
+              onPressed: () {
                 Navigator.pushNamed(context, '/inputview');
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children:const [
-                  Text('Next',style: TextStyle(fontSize: 18.0),),
-                  SizedBox(width: 5.0,),
+                children: const [
+                  Text(
+                    'Next',
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
                   Icon(
                     Icons.arrow_right_alt,
                     size: 28.0,
